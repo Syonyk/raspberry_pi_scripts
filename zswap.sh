@@ -5,7 +5,7 @@ do
 
 PAGES_STORED=$(</sys/kernel/debug/zswap/stored_pages)
 POOL_SIZE=$(</sys/kernel/debug/zswap/pool_total_size)
-SWAPFILE_USED_KB=`tail -n 1 /proc/swaps | cut -f 3`
+SWAPFILE_USED_KB=`tail -n 1 /proc/swaps | awk '$1=$1' | cut -d' ' -f 4`
 SAME_FILLED_PAGES=$(</sys/kernel/debug/zswap/same_filled_pages)
 
 
